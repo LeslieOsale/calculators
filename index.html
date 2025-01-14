@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starkville Adventures - Services</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            background: url('https://res.cloudinary.com/dwpr0xrjq/image/upload/v1732507231/173-jpg_styai9.webp') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .service-container {
+            width: 24%; /* Adjusted for 4 items in a row */
+            margin: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-container:hover {
+            transform: scale(1.05);
+        }
+
+        .service-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .service-container h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .service-container p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .service-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-container button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .service-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Starkville Adventures</h1>
+        <p>Explore Our Amazing Services and Experiences</p>
+    </header>
+
+    <div class="container">
+        <!-- Hiking Service -->
+        <div class="service-container">
+            <img src="https://res.cloudinary.com/dwpr0xrjq/image/upload/v1727342200/bg_wy6ant.jpg" alt="Hiking Service">
+            <h2>Hiking</h2>
+            <p>Experience the best hiking adventures with breathtaking views and a peaceful environment.</p>
+            <button onclick="window.location.href='hiking-pricing.html'">Calculate Hiking Costs</button>
+        </div>
+
+        <!-- Camping and Picnics Service -->
+        <div class="service-container">
+            <img src="https://res.cloudinary.com/dwpr0xrjq/image/upload/v1728648269/camping_anu5jv.jpg" alt="Camping and Picnics">
+            <h2>Camping and Picnics</h2>
+            <p>Enjoy the great outdoors with our camping and picnic packages tailored to your needs.</p>
+            <button onclick="window.location.href='camping-picnic-pricing.html'">Calculate Camping Costs</button>
+        </div>
+
+        <!-- Team Building Service -->
+        <div class="service-container">
+            <img src="https://res.cloudinary.com/dwpr0xrjq/image/upload/v1728648268/Team-Building-Packages_jwacyr.jpg" alt="Team Building">
+            <h2>Team Building</h2>
+            <p>Strengthen your team with engaging activities that promote collaboration and leadership.</p>
+            <button onclick="window.location.href='teambuilding-pricing.html'">Calculate Team Building Costs</button>
+        </div>
+
+        <!-- Game Park Service -->
+        <div class="service-container">
+            <img src="https://res.cloudinary.com/dwpr0xrjq/image/upload/v1728648268/gamepark_kknduu.jpg" alt="Game Park">
+            <h2>Game Park</h2>
+            <p>Explore the wild and experience the thrill of a safari in our carefully selected game parks.</p>
+            <button onclick="window.location.href='gamepark-pricing.html'">Calculate Game Park Costs</button>
+        </div>
+
+        <!-- Staff Contacts -->
+        <div class="service-container">
+            <img src="https://res.cloudinary.com/dwpr0xrjq/image/upload/v1727344846/CONSULTANT_k8szxn.jpg" alt="Contacts">
+            <h2>Contacts</h2>
+            <p>***</p>
+            <button onclick="window.location.href='staff-list.html'">View Staff List</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Powered by Starkville Adventures 2024</p>
+    </footer>
+</body>
+</html>

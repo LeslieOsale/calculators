@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <title>Starkville Adventures - Staff Contacts</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            background: url('https://res.cloudinary.com/dwpr0xrjq/image/upload/v1732507231/173-jpg_styai9.webp') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            border: 1px solid #4CAF50;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+
+        .search-bar::placeholder {
+            color: #aaa;
+        }
+
+        .staff-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .staff-list li {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .staff-list li:hover {
+            transform: scale(1.05);
+        }
+
+        .staff-list li h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #4CAF50;
+        }
+
+        .staff-list li p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+
+        .staff-list li p span {
+            font-weight: bold;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+        .whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    background: linear-gradient(45deg, #25D366, #128C7E);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #128C7E, #25D366);
+}
+
+.whatsapp-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Add an icon */
+.whatsapp-button i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(37, 211, 102, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(37, 211, 102, 0.9);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(37, 211, 102, 0.7);
+    }
+}
+
+.whatsapp-button {
+    animation: pulse 2s infinite;
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .staff-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .staff-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meet Our Dedicated Staff</h1>
+        <p>Get in touch with our amazing team members</p>
+    </header>
+
+    <div class="container">
+        <input type="text" id="searchBar" class="search-bar" placeholder="Search by name or title..." onkeyup="searchContacts()">
+
+        <ul class="staff-list" id="staffList">
+            <!-- Staff Member 1 -->
+            <li>
+                <h2>Osale A. Leslie</h2>
+                <p><span>Title:</span> CEO - Chief Executive Officer</p>
+                <p><span>Phone:</span> +254 705 809 412</p>
+                <p><span>Office Extension:</span> ***</p>
+                <a href="https://wa.me/+254705809412" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>whatsapp
+                </a>
+            </li>
+
+            <!-- Staff Member 2 -->
+            <li>
+                <h2>Faith Wavinya</h2>
+                <p><span>Title:</span> COO- Chief Operations Manager</p>
+                <p><span>Phone:</span> +254 794 551 220</p>
+                <p><span>Office Extension:</span> ***</p>
+                <a href="https://wa.me/+254794551220" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>whatsapp
+                </a>
+            </li>
+
+            <!-- Staff Member 3 -->
+            <li>
+                <h2>Victor Musyoka</h2>
+                <p><span>Title:</span> Travel Consultant</p>
+                <p><span>Phone:</span> +254 708 240 129</p>
+                <p><span>Office Extension:</span> ***</p>
+                <a href="https://wa.me/+254708240129" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>whatsapp
+                </a>
+            </li>
+
+            <!-- Staff Member 4 -->
+            <li>
+                <h2>Elsie Nakhanu</h2>
+                <p><span>Title:</span> Marketing Director</p>
+                <p><span>Phone:</span> +254 717 827 031</p>
+                <p><span>Office Extension:</span> ***</p>
+                <a href="https://wa.me/+254717827031" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>whatsapp
+                </a>
+            </li>
+
+            <!-- Staff Member 5 -->
+            <li>
+                <h2>Brian Kyalo</h2>
+                <p><span>Title:</span> Marketing Director</p>
+                <p><span>Phone:</span> +254 758 263 301</p>
+                <p><span>Office Extension:</span> ***</p>
+                <a href="https://wa.me/+254758263301" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>whatsapp
+                </a>
+            </li>
+
+            <!-- Staff Member 6 -->
+            <li>
+                <h2>Christine Mbenya</h2>
+                <p><span>Title:</span> Marketing Director</p>
+                <p><span>Phone:</span> +254 704 326 040</p>
+                <p><span>Office Extension:</span> ***</p>
+                <a href="https://wa.me/+254704326040" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>whatsapp
+                </a>
+            </li>
+
+            <!-- Staff Member 7 -->
+            <li>
+                <h2>IT Department</h2>
+                <p><span>Title:</span> IT Support</p>
+                <p><span>Phone:</span> +254 700 000 005</p>
+                <p><span>Office Extension:</span> ***</p>
+                <a href="https://wa.me/+254789861332" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>whatsapp
+                </a>
+            </li>
+
+            <!-- Staff Member 7 -->
+            <li>
+                <h2>CSR</h2>
+                <p><span>Title:</span> Customer Service Representative</p>
+                <p><span>Phone:</span> +254 700 000 006</p>
+                <p><span>Office Extension:</span> ***</p>
+                <a href="https://wa.me/+254789861332" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i>whatsapp
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Powered by Starkville Adventures 2024</p>
+    </footer>
+
+    <script>
+        function searchContacts() {
+            let input = document.getElementById("searchBar");
+            let filter = input.value.toUpperCase();
+            let list = document.getElementById("staffList");
+            let items = list.getElementsByTagName("li");
+
+            for (let i = 0; i < items.length; i++) {
+                let name = items[i].getElementsByTagName("h2")[0];
+                let title = items[i].getElementsByTagName("p")[0];
+                if (name.innerText.toUpperCase().indexOf(filter) > -1 || title.innerText.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

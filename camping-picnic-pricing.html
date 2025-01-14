@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camping and Picnics Pricing Calculator</title>
+    <style>
+        /* Ensure the entire page takes up full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            background: url('https://res.cloudinary.com/dwpr0xrjq/image/upload/v1732507231/173-jpg_styai9.webp') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Adding a 50% tint overlay on the background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 50% Tint */
+            z-index: -1;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .instructions {
+            text-align: center;
+            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .instructions p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for readability */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Subtle shadow for 3D effect */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-group label {
+            font-size: 1.1em;
+        }
+
+        .form-group input {
+            width: 50%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Output Results */
+        .output-container {
+            display: none;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .output-container p {
+            margin: 5px 0;
+        }
+
+        /* Footer Styles */
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                width: 90%;
+            }
+
+            .form-group input {
+                width: 100%;
+            }
+        }
+
+        /* Print Media Queries */
+        @media print {
+            body {
+                background: none; /* Remove background image */
+                color: black;
+            }
+
+            header, .instructions {
+                display: none; /* Hide header and instructions on print */
+            }
+
+            footer {
+                display: none; /* Hide footer on print */
+            }
+
+            .container {
+                background: none;
+                padding: 0;
+                box-shadow: none;
+                width: 100%;
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .instructions {
+                font-size: 1.2em;
+                text-align: left;
+                margin-bottom: 20px;
+            }
+
+            .form-group label, .form-group input {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            button {
+                display: none; /* Hide button on print */
+            }
+
+            .output-container {
+                display: block;
+                background: none;
+                color: black;
+                padding: 10px;
+                margin-top: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect for 3D appearance */
+            }
+
+            .output-container p {
+                margin: 10px 0;
+            }
+
+            /* Add Hike name and date to the printout */
+            .print-header {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+                font-weight: bold;
+            }
+
+            .print-date {
+                font-size: 1em;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Camping and Picnics Pricing Calculator</h1>
+    </header>
+    <div class="instructions">
+        <p>Fill in the fields below to calculate the camping and picnic pricing per person, including the necessary charges for transport, meals, equipment, and more.</p>
+    </div>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="hikeName">Event Name:</label>
+            <input type="text" id="eventName" placeholder="Enter event name" />
+        </div>
+        <div class="form-group">
+            <label for="groupNumber">Group Number:</label>
+            <input type="number" id="groupNumber" placeholder="Enter number of people" />
+        </div>
+        <div class="form-group">
+            <label for="transportPP">Transport per Person (KES):</label>
+            <input type="number" id="transportPP" placeholder="Enter transport cost" />
+        </div>
+        <div class="form-group">
+            <label for="equipmentPP">Equipment Rental per Person (KES):</label>
+            <input type="number" id="equipmentPP" placeholder="Enter equipment rental cost" />
+        </div>
+        <div class="form-group">
+            <label for="mealsPP">Meals/Snacks per Person (KES):</label>
+            <input type="number" id="mealsPP" placeholder="Enter meals/snacks cost" />
+        </div>
+        <div class="form-group">
+            <label for="emergencyPP">Emergency/Contingency per Person (KES):</label>
+            <input type="number" id="emergencyPP" placeholder="Enter emergency fee" />
+        </div>
+        <div class="form-group">
+            <label for="guidePrice">Guide Price (KES):</label>
+            <input type="number" id="guidePrice" placeholder="Enter total guide fee" />
+        </div>
+        <div class="form-group">
+            <label for="photographyPrice">Photography Price (KES):</label>
+            <input type="number" id="photographyPrice" placeholder="Enter photography fee" />
+        </div>
+        <div class="form-group">
+            <label for="profitMargin">Profit Margin (%):</label>
+            <input type="number" id="profitMargin" value="15" placeholder="Enter profit margin" />
+        </div>
+
+        <button onclick="calculatePricing()">Calculate Pricing</button>
+
+        <!-- Output Results -->
+        <div id="outputContainer" class="output-container">
+            <div class="print-header" id="eventNamePrint"></div>
+            <div class="print-date" id="calcDatePrint"></div>
+            <p id="grossTotal"></p>
+            <p id="profitMarginKES"></p>
+            <p id="netTotal"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Powered by Starkville Adventures 2024</p>
+    </footer>
+
+    <script>
+        function calculatePricing() {
+            const eventName = document.getElementById('eventName').value;
+            const groupNumber = parseInt(document.getElementById('groupNumber').value);
+            const transportPP = parseFloat(document.getElementById('transportPP').value);
+            const equipmentPP = parseFloat(document.getElementById('equipmentPP').value);
+            const mealsPP = parseFloat(document.getElementById('mealsPP').value);
+            const emergencyPP = parseFloat(document.getElementById('emergencyPP').value);
+            const guidePrice = parseFloat(document.getElementById('guidePrice').value);
+            const photographyPrice = parseFloat(document.getElementById('photographyPrice').value);
+            const profitMargin = parseFloat(document.getElementById('profitMargin').value);
+
+            // Calculate the total cost per person
+            const totalPerPerson = transportPP + equipmentPP + mealsPP + emergencyPP + (guidePrice / groupNumber) + (photographyPrice / groupNumber);
+
+            // Calculate gross total and profit
+            const grossTotal = totalPerPerson;
+            const profitMarginKES = (grossTotal * profitMargin) / 100;
+
+            // Calculate net total per person
+            const netTotal = grossTotal + profitMarginKES;
+
+            // Display the results
+            document.getElementById('grossTotal').textContent = `Gross Total per Person: KES ${grossTotal.toFixed(2)}`;
+            document.getElementById('profitMarginKES').textContent = `Profit Margin: KES ${profitMarginKES.toFixed(2)}`;
+            document.getElementById('netTotal').textContent = `Net Total per Person (Including Profit): KES ${netTotal.toFixed(2)}`;
+
+            // Set the event name and date
+            const currentDate = new Date().toLocaleDateString();
+            document.getElementById('eventNamePrint').textContent = `Event Name: ${eventName}`;
+            document.getElementById('calcDatePrint').textContent = `Date of Calculation: ${currentDate}`;
+
+            // Show the results container
+            document.getElementById('outputContainer').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
